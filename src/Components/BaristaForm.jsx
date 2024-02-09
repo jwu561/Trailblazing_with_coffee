@@ -1,33 +1,55 @@
 import React, {Component, useState} from "react";
 import RecipeChoices from './RecipeChoices';
+import drinksJson from "./drinks.json"
+
 
 const BaristaForm = () => {
 
-    const [inputs, setInputs] = useState({
-        'temperature': '',
-        'milk': '',
-        'syrup': '',
-        'blended': ''
-      });
-      
-    const ingredients = {
-        'temperature' : ['hot', 'lukewarm', 'cold'],
-        'syrup': ['mocha', 'vanilla', 'toffee', 'maple', 'caramel', 'other', 'none'],
-        'milk': ['cow', 'oat', 'goat', 'almond', 'none'],
-        'blended': ['yes', 'turbo', 'no']
-      };
-    
-    const onCheckAnswer = () => {
-        // Implement the function here
-    };
+  const [inputs, setInputs] = useState({
+    'temperature': '',
+    'milk': '',
+    'syrup': '',
+    'blended': ''
+  });
 
-    const onNewDrink = () => {
-        // Implement the function here
-    };
+  const ingredients = {
+    'temperature' : ['hot', 'lukewarm', 'cold'],
+    'syrup': ['mocha', 'vanilla', 'toffee', 'maple', 'caramel', 'other', 'none'],
+    'milk': ['cow', 'oat', 'goat', 'almond', 'none'],
+    'blended': ['yes', 'turbo', 'no']
+  };
+
+  const onCheckAnswer = () => {
+    // Implement the function here
+  };
+
+  const [currentDrink, setCurrentDrink] = useState(null);
+  const [trueRecipe, setTrueRecipe] = useState(null);
+
+  const getNextDrink = () => {
+    const randomIndex = Math.floor(Math.random() * drinksJson.drinks.length);
+    setCurrentDrink(drinksJson.drinks[randomIndex].name);
+    setTrueRecipe(drinksJson.drinks[randomIndex].ingredients);
+  };
+
+  const onNewDrink = () => {
+    setInputs({
+      'temperature': '',
+      'milk': '',
+      'syrup': '',
+      'blended': ''
+    });
+
+    getNextDrink();
+  };
 
     return (
         <div>
             <h2>Hi, I'd like to order a:</h2>
+            <div className="drink-container">
+      <h2 className="mini-header">{currentDrink}</h2>
+      
+    </div>
             <form>
                 <h3>Temperature</h3>
                 <div className="answer-space">
@@ -89,7 +111,7 @@ const BaristaForm = () => {
                     Check Answer
                 </button>
                 <button type="button" className="button submit" onClick={onNewDrink}>
-                    New Drink
+                🔄
                 </button>
             </form>
         </div>
