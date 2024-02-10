@@ -20,6 +20,8 @@ const BaristaForm = () => {
   };
 
   const onCheckAnswer = () => {
+    event.preventDefault();
+
     if (trueRecipe.temp != inputs['temperature']){
       setCheckedTemperature('wrong');
     }
@@ -28,21 +30,21 @@ const BaristaForm = () => {
     }
     
     
-    if (trueRecipe.temp != inputs['syrup']){
+    if (trueRecipe.syrup != inputs['syrup']){
       setCheckedSyrup('wrong');
     }
     else {
       setCheckedSyrup("correct");
     }
     
-    if (trueRecipe.temp != inputs['milk']){
+    if (trueRecipe.milk != inputs['milk']){
       setCheckedMilk('wrong');
     }
     else {
       setCheckedMilk("correct");
     }
 
-    if (trueRecipe.temp != inputs['blended']){
+    if (trueRecipe.blended != inputs['blended']){
       setCheckedBlended('wrong');
     }
     else {
@@ -90,7 +92,8 @@ const BaristaForm = () => {
       <h2 className="mini-header">{currentDrink}</h2>
       
     </div>
-            <form>
+    <form className="container">
+      <div className="mini-container">
                 <h3>Temperature</h3>
                 <div className="answer-space"  id={correct_temp}>
                   {inputs["temperature"]}
@@ -104,7 +107,8 @@ const BaristaForm = () => {
                   choices={ingredients["temperature"]}
                   checked={inputs["temperature"]}
                 />
-    
+    </div>
+                <div className="mini-container">
                 <h3>Milk</h3>
                 <div className="answer-space"  id={correct_milk}>
                   {inputs["milk"]}
@@ -118,7 +122,10 @@ const BaristaForm = () => {
                   choices={ingredients["milk"]}
                   checked={inputs["milk"]}
                 />
-    
+                </div>
+
+
+                <div className="mini-container">
                 <h3>Syrup</h3>
                 <div className="answer-space"  id={correct_syrup}>
                   {inputs["syrup"]}
@@ -132,7 +139,9 @@ const BaristaForm = () => {
                   choices={ingredients["syrup"]}
                   checked={inputs["syrup"]}
                 />
-    
+                </div>
+
+                <div className="mini-container">
                 <h3>Blended</h3>
                 <div className="answer-space"  id={correct_blended}>
                   {inputs["blended"]}
@@ -146,13 +155,16 @@ const BaristaForm = () => {
                   choices={ingredients["blended"]}
                   checked={inputs["blended"]}
                 />
-    
+                </div>
+                
+                <div className="mini-container">
                 <button type="submit" className="button submit" onClick={onCheckAnswer}>
                     Check Answer
                 </button>
-                <button type="button" className="button submit" onClick={onNewDrink}>
+                <button type="button" className="button newdrink" onClick={onNewDrink}>
                 🔄
                 </button>
+                </div>
             </form>
         </div>
     );
