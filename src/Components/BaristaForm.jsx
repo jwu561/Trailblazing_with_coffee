@@ -90,6 +90,9 @@ const BaristaForm = () => {
             <h2>Hi, I'd like to order a:</h2>
             <div className="drink-container">
       <h2 className="mini-header">{currentDrink}</h2>
+      <button type="button" className="button newdrink" onClick={onNewDrink}>
+                🔄
+                </button>
       
     </div>
     <form className="container">
@@ -156,16 +159,15 @@ const BaristaForm = () => {
                   checked={inputs["blended"]}
                 />
                 </div>
+
                 
-                <div className="mini-container">
-                <button type="submit" className="button submit" onClick={onCheckAnswer}>
-                    Check Answer
-                </button>
-                <button type="button" className="button newdrink" onClick={onNewDrink}>
-                🔄
-                </button>
-                </div>
             </form>
+
+            <div className="button-container">
+  <button type="button" className="button submit" onClick={onCheckAnswer}>
+    Check Answer
+  </button>
+</div>
         </div>
     );
                 };
