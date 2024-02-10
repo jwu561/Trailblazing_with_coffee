@@ -19,39 +19,60 @@ const BaristaForm = () => {
     'blended': ['yes', 'turbo', 'no']
   };
 
-  const onCheckAnswer = () => {
+  const onCheckAnswer = (event) => {
+    // Prevent default form submission behavior
     event.preventDefault();
-
-    if (trueRecipe.temp != inputs['temperature']){
-      setCheckedTemperature('wrong');
+  
+    // Check if the temperature input matches any of the temperature choices
+    if (!ingredients['temperature'].includes(inputs['temperature'])) {
+      alert("For temperature, that isn't even an option!");
+    } else {
+      // If it matches, check if it's the correct answer
+      if (trueRecipe.temp !== inputs['temperature']) {
+        setCheckedTemperature('wrong');
+      } else {
+        setCheckedTemperature('correct');
+      }
     }
-    else {
-      setCheckedTemperature("correct");
+  
+    // Do the same for other ingredients...
+    // For syrup
+    if (!ingredients['syrup'].includes(inputs['syrup'])) {
+      alert("For syrup, that isn't even an option!");
+    } else {
+      // Further validation for correct or wrong
+      if (trueRecipe.syrup !== inputs['syrup']) {
+        setCheckedSyrup('wrong');
+      } else {
+        setCheckedSyrup('correct');
+      }
     }
-    
-    
-    if (trueRecipe.syrup != inputs['syrup']){
-      setCheckedSyrup('wrong');
+  
+    // For milk
+    if (!ingredients['milk'].includes(inputs['milk'])) {
+      alert("For milk, that isn't even an option!");
+    } else {
+      // Further validation for correct or wrong
+      if (trueRecipe.milk !== inputs['milk']) {
+        setCheckedMilk('wrong');
+      } else {
+        setCheckedMilk('correct');
+      }
     }
-    else {
-      setCheckedSyrup("correct");
+  
+    // For blended
+    if (!ingredients['blended'].includes(inputs['blended'])) {
+      alert("For blended, that isn't even an option!");
+    } else {
+      // Further validation for correct or wrong
+      if (trueRecipe.blended !== inputs['blended']) {
+        setCheckedBlended('wrong');
+      } else {
+        setCheckedBlended('correct');
+      }
     }
-    
-    if (trueRecipe.milk != inputs['milk']){
-      setCheckedMilk('wrong');
-    }
-    else {
-      setCheckedMilk("correct");
-    }
-
-    if (trueRecipe.blended != inputs['blended']){
-      setCheckedBlended('wrong');
-    }
-    else {
-      setCheckedBlended("correct");
-    }
-    
   };
+  
 
   const [currentDrink, setCurrentDrink] = useState(null);
   const [trueRecipe, setTrueRecipe] = useState(null);
@@ -84,6 +105,8 @@ const BaristaForm = () => {
   const [correct_milk, setCheckedMilk] = useState('');
   const [correct_blended, setCheckedBlended] = useState('');
 
+
+  
 
     return (
         <div>

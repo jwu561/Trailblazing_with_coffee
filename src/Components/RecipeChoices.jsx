@@ -1,27 +1,25 @@
-import React, { Component, useEffect, useState } from "react";
+import React from "react";
 
-const RecipeChoices = ({ handleChange, label, choices, checked }) => {
-    return (
-      <div>
-        <div className="radio-buttons">
-  {choices &&
-    choices.map((choice) => (
-      <li key={choice}>
-        <input
-          id={choice}
-          value={choice}
-          name={label}
-          type="radio"
-          onChange={handleChange}
-          checked={checked == choice}
-        />
-          {choice}
-      </li>
-    ))}
-</div>
-
-      </div>
-    );
+const RecipeChoices = ({ label, choices, handleChange, currentVal }) => {
+  return (
+    <div>
+      <input
+        type="text"
+        name={label}
+        value={currentVal}
+        placeholder="Guess the ingredient..."
+        onChange={handleChange}
+        className="textbox"
+      />
+      <ul className="choices-list">
+        {choices && choices.map((choice) => (
+          <li key={choice}>
+            {choice}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
 export default RecipeChoices;

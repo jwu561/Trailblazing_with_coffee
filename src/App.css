@@ -113,3 +113,11 @@ button.newdrink {
   justify-content: center; /* Center button horizontally */
   width: 100%;
 }
+
+.textbox {
+  width: 90%; /* Makes the text box full width of its parent container */
+  padding: 5px; /* Adds some padding inside the text box */
+  margin-right: 50px; /* Adds space between the text box and the list */
+  border: 1px solid #ccc; /* Adds a border to the text box */
+  border-radius: 2px; /* Rounds the corners of the text box */
+}
