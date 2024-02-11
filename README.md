@@ -1,6 +1,6 @@
 # Barista App
 
-
+![](https://github.com/jwu561/Trailblazing_with_coffee/blob/main/lab3.gif)
 
 ## Description
 
@@ -47,9 +47,7 @@ To run the Barista App locally:
 - CSS3
 - JavaScript (ES6)
 
-## Contributing
 
-We welcome contributions to the Barista App! Please read `CONTRIBUTING.md` for details on our code of conduct, and the process for submitting pull requests to us.
 
 
 
